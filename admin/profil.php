@@ -1,3 +1,17 @@
+<?php
+session_start();
+include('../koneksi/koneksi.php');
+$id_user = $_SESSION['id_user'];
+//get profil
+$sql = "select `nama`, `email`,`foto` from `user` where `id_user`='$id_user'";
+//echo $sql;
+$query = mysqli_query($koneksi, $sql);
+while ($data = mysqli_fetch_row($query)) {
+  $nama = $data[0];
+  $email = $data[1];
+  $foto = $data[2];
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,27 +52,33 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <div class="col-sm-12">
-                    <div class="alert alert-success" role="alert">Data Berhasil Diubah</div>
+                <?php if (!empty($_GET['notif'])) {
+                  if ($_GET['notif']=="editberhasil") { ?>
+                  <div class="alert alert-success" role="alert">Data Berhasil Diubah</div>
+                  <?php } ?>
+                <?php } ?>
                 </div>
                 <table class="table table-bordered">
-                    <tbody>  
-                      <tr>
-                        <td colspan="2"><i class="fas fa-user-circle"></i> <strong>PROFIL<strong></td>
-                      </tr> 
-                      <tr>
-                        <td width="20%"><strong>Foto<strong></td>
-                        <td width="80%"><img src="foto/salnan.jpg" class="img-fluid" width="200px;"></td>
-                      </tr>                
-                      <tr>
-                        <td width="20%"><strong>Nama<strong></td>
-                        <td width="80%">Salnan Ratih A.</td>
-                      </tr>                
-                      <tr>
-                        <td width="20%"><strong>Email<strong></td>
-                        <td width="80%">salnanratih@gmail.com</td>
-                      </tr> 
-                    </tbody>
-                  </table>  
+                  <tbody>
+                    <tr>
+                      <td colspan="2"><i class="fas fa-user-circle"></i>
+                      <strong>PROFIL<strong></td>
+                    </tr>
+                    <tr>
+                      <td width="20%"><strong>Foto<strong></td>
+                      <td width="80%"><img src="foto/<?php echo $foto;?>"
+                      class="img-fluid" width="200px;"></td>
+                    </tr>
+                    <tr>
+                      <td width="20%"><strong>Nama<strong></td>
+                      <td width="80%"><?php echo $nama; ?></td>
+                    </tr>
+                    <tr>
+                      <td width="20%"><strong>Email<strong></td>
+                      <td width="80%"><?php echo $email;?></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">&nbsp;</div>
