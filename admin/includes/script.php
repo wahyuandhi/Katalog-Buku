@@ -1,4 +1,3 @@
-
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -25,7 +24,6 @@
   // Replace the <textarea id="editor1"> with a CKEditor
   // instance, using default configuration.
   CKEDITOR.replace( 'editor1',{filebrowserImageBrowseUrl : 'kcfinder'} );
-  CKEDITOR.replace( 'editor2',{filebrowserImageBrowseUrl : 'kcfinder'} );
 
 </script>
 <!-- bootstrap datepicker -->
