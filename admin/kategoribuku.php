@@ -1,5 +1,13 @@
 <?php
-  include('../koneksi/koneksi.php');
+include('../koneksi/koneksi.php');
+if((isset($_GET['aksi']))&&(isset($_GET['data']))){
+  if($_GET['aksi']=='hapus'){
+    $id_kategori_buku = $_GET['data'];
+    //hapus kategori buku
+    $sql_dh = "delete from `kategori_buku` where `id_kategori_buku` = '$id_kategori_buku'";
+    mysqli_query($koneksi,$sql_dh);
+  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,6 +67,8 @@
                   <div class="alert alert-success" role="alert">Data Berhasil Ditambahkan</div>
                 <?php } else if($_GET['notif']=="editberhasil") {?>
                   <div class="alert alert-success" role="alert">Data Berhasil Diubah</div>
+                <?php } else if($_GET['notif']=="hapusberhasil"){?>
+                  <div class="alert alert-success" role="alert">Data Berhasil Dihapus</div>
                 <?php }?>
               <?php }?>
               </div>
