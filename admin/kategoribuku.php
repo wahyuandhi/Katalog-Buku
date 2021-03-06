@@ -86,7 +86,7 @@
                       <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $kategori_buku; ?>?'))window.location.href = 'kategoribuku.php?aksi=hapus&data=<?php echo $id_kategori_buku;?>&notif=hapusberhasil'" class="btn btn-xs btn-warning"><i class="fas fa-trash"></i>Hapus</a>
                     </td>
                   </tr>
-                  <?php $no++;}?>                    
+                  <?php $no++; }?>                    
                 </tbody>
               </table>
             </div>
